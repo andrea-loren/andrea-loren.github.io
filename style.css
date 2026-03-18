@@ -11,10 +11,6 @@
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-h2 {
-    text-align: center;
-}
-
 /* --- 2. GLOBAL STYLES --- */
 body {
     background-color: var(--bg-dark) !important;
@@ -113,7 +109,6 @@ article.project-card {
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important;
-    margin: 0 !important;
 }
 
 .card-body {
@@ -125,177 +120,54 @@ article.project-card {
     border-top: 1px solid var(--glass-border) !important;
     padding-top: 1.5rem !important;
     margin-top: 1rem !important;
-    display: block !important;
-    text-align: left !important;
 }
 
 .view-link {
     color: var(--accent-bright) !important;
     font-weight: 600;
     text-decoration: none !important;
-    display: inline-block;
-}
-
-.grid {
-    align-items: stretch !important;
 }
 
 /* --- 6. FOOTER --- */
 .footer-content {
     text-align: center;
     padding: 40px 0;
-    margin-top: 50px;
 }
 
-.footer-links {
-    margin-bottom: 15px;
-}
-
-.footer-links a {
-    margin: 0 15px;
-    color: var(--text-white);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.footer-links a:hover {
-    color: var(--accent-bright);
-}
-
-/* --- 7. BUTTONS & CONTACT GRID --- */
-[role="button"] {
-    background-color: var(--accent-bright) !important;
-    border: none !important;
-    border-radius: 50px !important;
-    padding: 12px 30px !important;
-    transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.contact-grid {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 40px !important; /* The extra space you wanted */
-    margin-top: 40px !important;
-    width: 100%;
-}
-
-.contact-btn {
-    width: auto !important;
-    min-width: 200px !important;
-    display: inline-flex !important;
-    justify-content: center !important;
-    margin: 0 !important;
-    text-decoration: none !important;
-}
-
-.contact-btn.secondary {
-    background-color: var(--accent-pink) !important;
-    box-shadow: 0 0 15px rgba(163, 41, 158, 0.4);
-}
-
-.contact-btn:hover {
-    transform: translateY(-3px);
-    filter: brightness(1.1);
-}
-
-/* Mobile Fix */
-@media (max-width: 600px) {
-    .contact-grid {
-        flex-direction: column !important;
-        gap: 20px !important;
-    }
-}
-
-/* --- 8. CONTACT PAGE BUTTONS FIX (FINAL) --- */
-.contact-grid {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important; /* Centers buttons horizontally */
-    align-items: center !important;
-    gap: 40px !important; /* The space you requested */
-    
-    /* Forces the container to be the full width of the page */
-    width: 100% !important;
-    max-width: none !important; 
-    margin: 60px 0 !important;
-    padding: 0 !important;
-    
-    /* Ensures it clears any Pico.css grid behavior */
-    position: relative !important;
-    clear: both !important;
-}
-
-.contact-btn {
-    /* Keeps buttons from stretching */
-    flex: 0 1 auto !important; 
-    width: auto !important;
-    min-width: 200px !important;
-    
-    /* Visuals */
-    display: inline-flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    text-decoration: none !important;
-    margin: 0 !important;
-}
-
-/* Secondary Button Styling (Instagram) */
-/*
-.contact-btn.secondary {
-    background-color: var(--accent-pink) !important;
-    box-shadow: 0 0 15px rgba(163, 41, 158, 0.4);
-}
-*/
-
-/* Hover Effect */
-.contact-btn:hover {
-    transform: translateY(-3px);
-    transition: transform 0.2s ease;
-    filter: brightness(1.1);
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
-    .contact-grid {
-        flex-direction: column !important;
-        gap: 20px !important;
-    }
-    .contact-btn {
-        width: 80% !important; 
-    }
-}
-
-/* --- 9. HOME PAGE HERO BUTTON FIX (ULTIMATE) --- */
-#hero-glow-btn {
-    /* Colors & Glow */
+/* --- 7. BUTTONS (INCLUDING HERO GLOW FIX) --- */
+[role="button"], #hero-glow-btn, .contact-btn {
     background-color: var(--accent-bright) !important;
     border: none !important;
     color: white !important;
-    box-shadow: 0 0 20px rgba(127, 29, 255, 0.5) !important;
-    
-    /* This is the key to making "translateY" work */
+    border-radius: 50px !important;
+    padding: 12px 30px !important;
     display: inline-flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    
-    /* Positioning */
-    margin: 20px auto !important;
+    justify-content: center;
+    align-items: center;
     text-decoration: none !important;
-    
-    /* Animation speed and "bounce" */
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: 0 0 15px rgba(127, 29, 255, 0.4) !important;
 }
 
-#hero-glow-btn:hover {
-    /* The physical lift */
-    transform: translateY(-10px) !important;
-    
-    /* The intensified glow */
-    box-shadow: 0 0 40px rgba(127, 29, 255, 0.8) !important;
-    
-    filter: brightness(1.2) !important;
-    cursor: pointer !important;
+[role="button"]:hover, #hero-glow-btn:hover, .contact-btn:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 0 30px rgba(127, 29, 255, 0.7) !important;
+    filter: brightness(1.1);
+}
+
+/* --- 8. CONTACT GRID --- */
+.contact-grid {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 40px !important;
+    width: 100% !important;
+    margin: 40px 0 !important;
+}
+
+.contact-btn.secondary {
+    background-color: var(--accent-pink) !important;
+}
+
+@media (max-width: 600px) {
+    .contact-grid { flex-direction: column; gap: 20px; }
 }
