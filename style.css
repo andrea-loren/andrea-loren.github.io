@@ -195,34 +195,45 @@ article.project-card {
     border: none !important;
     border-radius: 50px !important;
     padding: 12px 30px !important;
-}
 
+    
 /* --- 8. CONTACT PAGE BUTTONS FIX --- */
 .contact-grid {
-    display: flex;
-    justify-content: center; /* Centers them horizontally */
-    align-items: center;
-    gap: 20px;               /* Adds even spacing between them */
-    flex-wrap: wrap;         /* Makes sure they stack nicely on phones */
-    margin-top: 20px;
+    display: flex !important;
+    flex-direction: row !important; /* Forces side-by-side */
+    justify-content: center !important; /* Centers the whole group */
+    align-items: center !important;
+    gap: 40px !important; /* This creates the space between buttons */
+    margin-top: 40px !important;
+    width: 100%;
 }
 
 .contact-btn {
-    /* This "width: auto" is the secret to stopping the stretch */
-    width: auto !important; 
-    min-width: 180px;        /* Keeps both buttons the same width */
+    width: auto !important; /* Stops the stretching */
+    min-width: 200px !important; /* Ensures they look uniform */
     display: inline-flex !important;
-    justify-content: center;
-    margin: 0 !important;    /* Removes Pico's default margins */
+    justify-content: center !important;
+    margin: 0 !important; /* Clears any default Pico margins */
+    text-decoration: none !important;
 }
 
-/* Let's make the Instagram button your magenta/pink color */
+/* Styling the second button with your magenta accent */
 .contact-btn.secondary {
     background-color: var(--accent-pink) !important;
     box-shadow: 0 0 15px rgba(163, 41, 158, 0.4);
 }
 
+/* Smooth hover effect */
 .contact-btn:hover {
     transform: translateY(-3px);
     transition: transform 0.2s ease;
+    filter: brightness(1.1);
+}
+
+/* Mobile Fix: If the screen is too small, stack them nicely */
+@media (max-width: 600px) {
+    .contact-grid {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
 }
