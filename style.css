@@ -192,3 +192,13 @@ article.project-card {
     border-radius: 50px !important;
     padding: 12px 30px !important;
 }
+
+.contact-button {
+    background-color: var(--accent-bright) !important;
+    border: none !important;
+    border-radius: 50px !important;
+    padding: 12px 30px !important;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+}
