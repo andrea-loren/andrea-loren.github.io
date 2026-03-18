@@ -208,3 +208,51 @@ article.project-card {
         gap: 20px !important;
     }
 }
+
+/* --- 8. CONTACT PAGE BUTTONS FIX --- */
+.contact-grid {
+    display: flex !important;
+    flex-direction: row !important; 
+    justify-content: center !important; /* Centers buttons inside the div */
+    align-items: center !important;
+    gap: 40px !important; 
+    
+    /* THE FIX: Center the div itself */
+    margin: 40px auto 0 auto !important; 
+    width: 100% !important;
+    max-width: 600px; /* Limits how far apart they can go */
+}
+
+.contact-btn {
+    width: auto !important; 
+    min-width: 200px !important; 
+    display: inline-flex !important;
+    justify-content: center !important;
+    margin: 0 !important; 
+    text-decoration: none !important;
+    flex: 0 1 auto !important; /* Prevents them from growing to fill space */
+}
+
+/* Second button (Instagram) */
+.contact-btn.secondary {
+    background-color: var(--accent-pink) !important;
+    box-shadow: 0 0 15px rgba(163, 41, 158, 0.4);
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    transition: transform 0.2s ease;
+    filter: brightness(1.1);
+}
+
+/* Mobile Fix */
+@media (max-width: 600px) {
+    .contact-grid {
+        flex-direction: column !important;
+        gap: 20px !important;
+        padding: 0 20px;
+    }
+    .contact-btn {
+        width: 100% !important; /* On phones, full width actually looks better */
+    }
+}
