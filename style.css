@@ -99,7 +99,7 @@ nav.container-fluid {
     50% { transform: translateY(-30px) scale(1.2); opacity: 1; z-index: 10; }
 }
 
-/* --- 5. CARDS --- */
+/* --- 5. CARDS (HOVER ENHANCEMENT) --- */
 article.project-card {
     background: var(--glass-bg) !important;
     backdrop-filter: blur(10px);
@@ -109,23 +109,21 @@ article.project-card {
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important;
+    transition: all 0.4s ease !important; /* Smooth transition for the glow */
 }
 
-.card-body {
-    flex: 1 0 auto !important;
+/* This is the magic part for the pink outline */
+article.project-card:hover {
+    transform: translateY(-10px) scale(1.02) !important;
+    border-color: var(--accent-pink) !important; /* Your pink accent */
+    box-shadow: 0 0 20px rgba(163, 41, 158, 0.4) !important; /* Soft pink glow */
+    cursor: pointer;
 }
 
-.card-footer {
-    background: transparent !important;
-    border-top: 1px solid var(--glass-border) !important;
-    padding-top: 1.5rem !important;
-    margin-top: 1rem !important;
-}
-
-.view-link {
-    color: var(--accent-bright) !important;
-    font-weight: 600;
-    text-decoration: none !important;
+/* Make sure the text inside stays bright on hover */
+article.project-card:hover h3, 
+article.project-card:hover p {
+    color: var(--text-white) !important;
 }
 
 /* --- 6. FOOTER --- */
