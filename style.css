@@ -243,10 +243,12 @@ article.project-card {
 }
 
 /* Secondary Button Styling (Instagram) */
+/*
 .contact-btn.secondary {
     background-color: var(--accent-pink) !important;
     box-shadow: 0 0 15px rgba(163, 41, 158, 0.4);
 }
+*/
 
 /* Hover Effect */
 .contact-btn:hover {
