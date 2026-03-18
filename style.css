@@ -194,11 +194,12 @@ article.project-card {
 }
 
 .contact-button {
+    display: flex;
     background-color: var(--accent-bright) !important;
     border: none !important;
     border-radius: 50px !important;
     padding: 12px 30px !important;
-    margin-left: 50px;
-    margin-right: 50px;
-    text-align: center;
+    margin-left: 30px;
+    margin-right: 30px;
+    justify-content: center;
 }
