@@ -209,50 +209,59 @@ article.project-card {
     }
 }
 
-/* --- 8. CONTACT PAGE BUTTONS FIX --- */
+/* --- 8. CONTACT PAGE BUTTONS FIX (FINAL) --- */
 .contact-grid {
     display: flex !important;
-    flex-direction: row !important; 
-    justify-content: center !important; /* Centers buttons inside the div */
+    flex-direction: row !important;
+    justify-content: center !important; /* Centers buttons horizontally */
     align-items: center !important;
-    gap: 40px !important; 
+    gap: 40px !important; /* The space you requested */
     
-    /* THE FIX: Center the div itself */
-    margin: 40px auto 0 auto !important; 
+    /* Forces the container to be the full width of the page */
     width: 100% !important;
-    max-width: 600px; /* Limits how far apart they can go */
+    max-width: none !important; 
+    margin: 60px 0 !important;
+    padding: 0 !important;
+    
+    /* Ensures it clears any Pico.css grid behavior */
+    position: relative !important;
+    clear: both !important;
 }
 
 .contact-btn {
-    width: auto !important; 
-    min-width: 200px !important; 
+    /* Keeps buttons from stretching */
+    flex: 0 1 auto !important; 
+    width: auto !important;
+    min-width: 200px !important;
+    
+    /* Visuals */
     display: inline-flex !important;
     justify-content: center !important;
-    margin: 0 !important; 
+    align-items: center !important;
     text-decoration: none !important;
-    flex: 0 1 auto !important; /* Prevents them from growing to fill space */
+    margin: 0 !important;
 }
 
-/* Second button (Instagram) */
+/* Secondary Button Styling (Instagram) */
 .contact-btn.secondary {
     background-color: var(--accent-pink) !important;
     box-shadow: 0 0 15px rgba(163, 41, 158, 0.4);
 }
 
+/* Hover Effect */
 .contact-btn:hover {
     transform: translateY(-3px);
     transition: transform 0.2s ease;
     filter: brightness(1.1);
 }
 
-/* Mobile Fix */
+/* Mobile Responsiveness */
 @media (max-width: 600px) {
     .contact-grid {
         flex-direction: column !important;
         gap: 20px !important;
-        padding: 0 20px;
     }
     .contact-btn {
-        width: 100% !important; /* On phones, full width actually looks better */
+        width: 80% !important; 
     }
 }
