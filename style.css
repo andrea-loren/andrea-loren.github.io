@@ -268,26 +268,34 @@ article.project-card {
     }
 }
 
-/* --- 9. HOME PAGE HERO BUTTON FIX --- */
-.glow-button {
+/* --- 9. HOME PAGE HERO BUTTON FIX (ULTIMATE) --- */
+#hero-glow-btn {
+    /* Colors & Glow */
     background-color: var(--accent-bright) !important;
     border: none !important;
     color: white !important;
-    box-shadow: 0 0 15px rgba(127, 29, 255, 0.5) !important;
+    box-shadow: 0 0 20px rgba(127, 29, 255, 0.5) !important;
     
-    /* Forces the button to be a hoverable, moving object */
-    display: inline-block !important;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important;
+    /* This is the key to making "translateY" work */
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+    /* Positioning */
+    margin: 20px auto !important;
     text-decoration: none !important;
+    
+    /* Animation speed and "bounce" */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
-.glow-button:hover {
-    /* This creates the physical lift */
-    transform: translateY(-8px) !important;
+#hero-glow-btn:hover {
+    /* The physical lift */
+    transform: translateY(-10px) !important;
     
-    /* This intensifies the violet glow */
-    box-shadow: 0 0 30px rgba(127, 29, 255, 0.8) !important;
+    /* The intensified glow */
+    box-shadow: 0 0 40px rgba(127, 29, 255, 0.8) !important;
     
-    filter: brightness(1.2);
-    cursor: pointer;
+    filter: brightness(1.2) !important;
+    cursor: pointer !important;
 }
