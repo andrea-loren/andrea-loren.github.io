@@ -55,12 +55,6 @@ nav.container-fluid {
 }
 
 /* --- 4. HERO & DNA TWIST ANIMATION --- */
-.hero {
-    background: transparent !important;
-    padding: 100px 0 60px 0;
-    text-align: center;
-}
-
 .dna-wrapper {
     position: relative;
     height: 120px; 
@@ -68,7 +62,7 @@ nav.container-fluid {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
+    margin: 40px 0;
 }
 
 .dna-dot {
@@ -78,25 +72,26 @@ nav.container-fluid {
     background: var(--accent-bright);
     border-radius: 50%;
     box-shadow: 0 0 15px var(--accent-bright);
+    /* Horizontal spacing */
     left: calc(50% + (var(--i) - 3.5) * 35px);
     animation: dna-twist 2s ease-in-out infinite;
     animation-delay: var(--d);
 }
 
-/* The Connector Lines (Rungs) */
-.dna-dot::after {
+/* THE RUNGS: Using the first strand to draw a line to the second */
+.dna-dot::before {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
+    /* This line bridges the gap between Strand 1 and Strand 2 */
     width: 2px;
-    /* This height stretches to reach the other strand */
-    height: 60px; 
+    height: 60px; /* Adjust based on how far the dots move */
     background: linear-gradient(to bottom, var(--accent-bright), var(--accent-pink));
     opacity: 0.3;
     z-index: -1;
+    /* This makes the line move with the dot */
     transform-origin: top;
-    /* The line only needs to be attached to one strand to bridge the gap */
     display: block;
 }
 
@@ -106,35 +101,19 @@ nav.container-fluid {
     animation-name: dna-twist-reverse !important;
 }
 
-/* We hide the lines on the second strand so we don't have double lines */
-.second-strand::after {
+/* Prevent double-lines by hiding rungs on the second strand */
+.second-strand::before {
     display: none;
 }
 
 @keyframes dna-twist {
-    0%, 100% { 
-        transform: translateY(-30px) scale(1.2); 
-        opacity: 1;
-        z-index: 10;
-    }
-    50% { 
-        transform: translateY(30px) scale(0.7); 
-        opacity: 0.4;
-        z-index: 1;
-    }
+    0%, 100% { transform: translateY(-30px) scale(1.2); opacity: 1; }
+    50% { transform: translateY(30px) scale(0.7); opacity: 0.4; }
 }
 
 @keyframes dna-twist-reverse {
-    0%, 100% { 
-        transform: translateY(30px) scale(0.7); 
-        opacity: 0.4;
-        z-index: 1;
-    }
-    50% { 
-        transform: translateY(-30px) scale(1.2); 
-        opacity: 1;
-        z-index: 10;
-    }
+    0%, 100% { transform: translateY(30px) scale(0.7); opacity: 0.4; }
+    50% { transform: translateY(-30px) scale(1.2); opacity: 1; }
 }
 
 /* --- 5. CARDS (DYNAMIC HEIGHT & PINK HOVER) --- */
