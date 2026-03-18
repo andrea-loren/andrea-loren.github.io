@@ -265,3 +265,19 @@ article.project-card {
         width: 80% !important; 
     }
 }
+
+/* --- 9. HOME PAGE BUTTON GLOW --- */
+/* This targets the "Get in Touch" button specifically */
+.hero [role="button"].secondary {
+    background-color: var(--accent-bright) !important;
+    border: none !important;
+    color: white !important;
+    box-shadow: 0 0 20px rgba(127, 29, 255, 0.6); /* The violet glow */
+    transition: all 0.3s ease;
+}
+
+.hero [role="button"].secondary:hover {
+    box-shadow: 0 0 30px rgba(127, 29, 255, 0.8); /* Stronger glow on hover */
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+}
