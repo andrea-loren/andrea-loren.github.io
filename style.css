@@ -197,13 +197,32 @@ article.project-card {
     padding: 12px 30px !important;
 }
 
-#contact-button {
+/* --- 8. CONTACT PAGE BUTTONS FIX --- */
+.contact-grid {
     display: flex;
-    background-color: var(--accent-bright) !important;
-    border: none !important;
-    border-radius: 50px !important;
-    padding: 12px 30px !important;
-    margin-left: 30px;
-    margin-right: 30px;
+    justify-content: center; /* Centers them horizontally */
+    align-items: center;
+    gap: 20px;               /* Adds even spacing between them */
+    flex-wrap: wrap;         /* Makes sure they stack nicely on phones */
+    margin-top: 20px;
+}
+
+.contact-btn {
+    /* This "width: auto" is the secret to stopping the stretch */
+    width: auto !important; 
+    min-width: 180px;        /* Keeps both buttons the same width */
+    display: inline-flex !important;
     justify-content: center;
+    margin: 0 !important;    /* Removes Pico's default margins */
+}
+
+/* Let's make the Instagram button your magenta/pink color */
+.contact-btn.secondary {
+    background-color: var(--accent-pink) !important;
+    box-shadow: 0 0 15px rgba(163, 41, 158, 0.4);
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    transition: transform 0.2s ease;
 }
