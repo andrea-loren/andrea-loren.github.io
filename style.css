@@ -267,23 +267,25 @@ article.project-card {
 }
 
 /* --- 9. HOME PAGE HERO BUTTON FIX --- */
-/* Target the "Get in Touch" button in the Hero section */
-.hero [role="button"].secondary {
+.glow-button {
     background-color: var(--accent-bright) !important;
     border: none !important;
     color: white !important;
-    box-shadow: 0 0 20px rgba(127, 29, 255, 0.5) !important;
+    box-shadow: 0 0 15px rgba(127, 29, 255, 0.5) !important;
+    
+    /* Forces the button to be a hoverable, moving object */
     display: inline-block !important;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease !important;
+    text-decoration: none !important;
 }
 
-.hero [role="button"].secondary:hover {
-    /* This creates the "lift" effect */
-    transform: translateY(-5px) !important;
+.glow-button:hover {
+    /* This creates the physical lift */
+    transform: translateY(-8px) !important;
     
-    /* This intensifies the glow */
-    box-shadow: 0 0 35px rgba(127, 29, 255, 0.8) !important;
+    /* This intensifies the violet glow */
+    box-shadow: 0 0 30px rgba(127, 29, 255, 0.8) !important;
     
-    filter: brightness(1.2) !important;
+    filter: brightness(1.2);
     cursor: pointer;
 }
