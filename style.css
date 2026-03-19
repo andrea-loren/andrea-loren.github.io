@@ -21,7 +21,8 @@ body {
     margin: 0;
     line-height: 1.6;
     min-height: 100vh;
-    padding-top: 80px; 
+    padding-top: 80px;
+    text-align: center; /* Ensures global centering */
 }
 
 h1, h2, h3, h4, p, li, strong, span {
@@ -38,11 +39,9 @@ nav.container-fluid {
     top: 0;
     width: 100%;
     background: rgba(18, 5, 38, 0.8) !important;
-    backdrop-filter: blur(15px) saturate(180%);
-    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border) !important;
     z-index: 1000;
-    padding: 10px 0;
 }
 
 .nav-wrapper {
@@ -50,14 +49,13 @@ nav.container-fluid {
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    padding: 0 40px;
+    padding: 10px 40px;
 }
 
-/* --- 4. HERO & DNA TWIST ANIMATION --- */
+/* --- 4. DNA HELIX ANIMATION --- */
 .dna-wrapper {
     position: relative;
-    height: 120px; 
+    height: 120px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -72,27 +70,23 @@ nav.container-fluid {
     background: var(--accent-bright);
     border-radius: 50%;
     box-shadow: 0 0 15px var(--accent-bright);
-    /* Horizontal spacing */
-    left: calc(50% + (var(--i) - 3.5) * 35px);
+    left: calc(50% + (var(--i) - 3.5) * 40px);
     animation: dna-twist 2s ease-in-out infinite;
     animation-delay: var(--d);
 }
 
-/* THE RUNGS: Using the first strand to draw a line to the second */
+/* The Rungs (Connecting Lines) */
 .dna-dot::before {
     content: "";
     position: absolute;
-    top: 50%;
-    left: 50%;
-    /* This line bridges the gap between Strand 1 and Strand 2 */
+    top: 6px; /* Half of dot height */
+    left: 6px; /* Half of dot width */
     width: 2px;
-    height: 60px; /* Adjust based on how far the dots move */
+    height: 60px; /* Distance between strands */
     background: linear-gradient(to bottom, var(--accent-bright), var(--accent-pink));
-    opacity: 0.3;
+    opacity: 0.2;
     z-index: -1;
-    /* This makes the line move with the dot */
     transform-origin: top;
-    display: block;
 }
 
 .second-strand {
@@ -101,10 +95,7 @@ nav.container-fluid {
     animation-name: dna-twist-reverse !important;
 }
 
-/* Prevent double-lines by hiding rungs on the second strand */
-.second-strand::before {
-    display: none;
-}
+.second-strand::before { display: none; } /* Only one set of lines */
 
 @keyframes dna-twist {
     0%, 100% { transform: translateY(-30px) scale(1.2); opacity: 1; }
@@ -116,13 +107,13 @@ nav.container-fluid {
     50% { transform: translateY(-30px) scale(1.2); opacity: 1; }
 }
 
-/* --- 5. CARDS (DYNAMIC HEIGHT & PINK HOVER) --- */
+/* --- 5. CARDS --- */
 .grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    /* This ensures all cards in the same row stretch to match the tallest one */
-    align-items: stretch !important; 
+    align-items: stretch !important;
+    text-align: left; /* Keep card text left-aligned */
 }
 
 article.project-card {
@@ -131,50 +122,40 @@ article.project-card {
     border: 1px solid var(--glass-border) !important;
     border-radius: 20px !important;
     padding: 2rem !important;
-    margin: 0 !important;
-    
-    /* Flexbox settings to manage internal spacing */
     display: flex !important;
     flex-direction: column !important;
-    height: 100% !important; 
+    height: 100% !important;
     transition: all 0.4s ease !important;
 }
 
-.card-body {
-    /* This pushes the footer down by absorbing all extra space */
-    flex-grow: 1 !important;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-footer {
-    /* Puts the footer at the very bottom of the card */
-    margin-top: auto !important; 
-    padding-top: 1.5rem !important;
-    border-top: 1px solid var(--glass-border) !important;
-    background: transparent !important;
-}
-
-/* Pink Hover Effect */
 article.project-card:hover {
-    transform: translateY(-10px) scale(1.01) !important;
+    transform: translateY(-10px);
     border-color: var(--accent-pink) !important;
     box-shadow: 0 0 25px rgba(163, 41, 158, 0.4) !important;
 }
 
+.card-body { flex-grow: 1 !important; }
+
+.card-footer {
+    margin-top: auto !important;
+    padding-top: 1.5rem !important;
+    border-top: 1px solid var(--glass-border) !important;
+}
+
 .view-link {
-    color: var(--accent-bright) !important; /* Stays violet */
+    color: var(--accent-bright) !important;
     font-weight: 600;
     text-decoration: none !important;
 }
+
 /* --- 6. FOOTER --- */
 .footer-content {
     text-align: center;
-    padding: 40px 0;
+    padding: 60px 0;
 }
 
-/* --- 7. BUTTONS (INCLUDING HERO GLOW FIX) --- */
-[role="button"], #hero-glow-btn, .contact-btn {
+/* --- 7. BUTTONS --- */
+#hero-glow-btn, .contact-btn, [role="button"] {
     background-color: var(--accent-bright) !important;
     border: none !important;
     color: white !important;
@@ -188,10 +169,9 @@ article.project-card:hover {
     box-shadow: 0 0 15px rgba(127, 29, 255, 0.4) !important;
 }
 
-[role="button"]:hover, #hero-glow-btn:hover, .contact-btn:hover {
+#hero-glow-btn:hover, .contact-btn:hover {
     transform: translateY(-8px) !important;
     box-shadow: 0 0 30px rgba(127, 29, 255, 0.7) !important;
-    filter: brightness(1.1);
 }
 
 /* --- 8. CONTACT GRID --- */
@@ -203,9 +183,7 @@ article.project-card:hover {
     margin: 40px 0 !important;
 }
 
-.contact-btn.secondary {
-    background-color: var(--accent-pink) !important;
-}
+.contact-btn.secondary { background-color: var(--accent-pink) !important; }
 
 @media (max-width: 600px) {
     .contact-grid { flex-direction: column; gap: 20px; }
