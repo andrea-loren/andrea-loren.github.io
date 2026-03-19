@@ -10,7 +10,7 @@
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-/* --- 2. GLOBAL STYLES --- */
+/* --- 2. GLOBAL RESET --- */
 body {
     background-color: var(--bg-dark) !important;
     background-image: radial-gradient(circle at 10% 20%, rgba(127, 29, 255, 0.15) 0%, transparent 40%),
@@ -18,58 +18,65 @@ body {
     color: var(--text-white) !important;
     font-family: 'Inter', sans-serif;
     margin: 0;
-    padding-top: 80px;
+    padding-top: 100px;
     min-height: 100vh;
 }
 
-/* --- 3. NAVIGATION (FORCE SIDES) --- */
+h1, h2, h3, h4, p, li, strong, span, a {
+    color: var(--text-white) !important;
+}
+
+.highlight {
+    color: var(--accent-bright) !important;
+}
+
+/* --- 3. NAVIGATION FIX --- */
 nav.container-fluid {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(18, 5, 38, 0.95) !important;
+    background: rgba(18, 5, 38, 0.9) !important;
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border) !important;
-    z-index: 9999;
-    padding: 0 !important;
+    z-index: 999;
 }
 
 .nav-wrapper {
     max-width: 1200px;
     margin: 0 auto;
     display: flex !important;
-    flex-direction: row !important;
-    justify-content: space-between !important; /* Pushes Logo Left, Links Right */
-    align-items: center !important;
-    padding: 10px 40px !important;
-    text-align: left !important;
+    justify-content: space-between !important;
+    align-items: center;
+    padding: 10px 20px;
 }
 
 .nav-wrapper ul {
     display: flex !important;
-    flex-direction: row !important;
-    margin: 0 !important;
-    padding: 0 !important;
     list-style: none !important;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
 }
 
-/* --- 4. DNA HELIX (STABLE RUNGS) --- */
+/* --- 4. DNA HELIX --- */
 .dna-wrapper {
     position: relative;
-    height: 150px;
+    height: 120px;
     width: 100%;
-    margin: 40px 0;
-    overflow: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
 }
 
 .dna-dot {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background: var(--accent-bright);
     border-radius: 50%;
-    box-shadow: 0 0 15px var(--accent-bright);
-    left: calc(50% + (var(--i) - 3.5) * 45px);
+    box-shadow: 0 0 10px var(--accent-bright);
+    left: calc(50% + (var(--i) - 3.5) * 40px);
     animation: dna-twist 2s ease-in-out infinite;
     animation-delay: var(--d);
 }
@@ -78,84 +85,83 @@ nav.container-fluid {
 .dna-dot::before {
     content: "";
     position: absolute;
-    top: 6px;
-    left: 5px;
+    top: 5px;
+    left: 4px;
     width: 2px;
-    height: 70px; /* Bridge length */
+    height: 60px;
     background: linear-gradient(to bottom, var(--accent-bright), var(--accent-pink));
     opacity: 0.3;
-    z-index: -1;
 }
 
 .second-strand {
     background: var(--accent-pink) !important;
-    box-shadow: 0 0 15px var(--accent-pink);
     animation-name: dna-twist-reverse !important;
 }
 
-.second-strand::before { display: none !important; }
+.second-strand::before { display: none; }
 
 @keyframes dna-twist {
-    0%, 100% { transform: translateY(-35px) scale(1.1); opacity: 1; }
-    50% { transform: translateY(35px) scale(0.7); opacity: 0.4; }
+    0%, 100% { transform: translateY(-30px); opacity: 1; }
+    50% { transform: translateY(30px); opacity: 0.4; }
 }
 
 @keyframes dna-twist-reverse {
-    0%, 100% { transform: translateY(35px) scale(0.7); opacity: 0.4; }
-    50% { transform: translateY(-35px) scale(1.1); opacity: 1; }
+    0%, 100% { transform: translateY(30px); opacity: 0.4; }
+    50% { transform: translateY(-30px); opacity: 1; }
 }
 
-/* --- 5. CARDS & HERO --- */
+/* --- 5. CARDS --- */
 .hero { text-align: center; }
 
 article.project-card {
     background: var(--glass-bg) !important;
-    backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border) !important;
-    border-radius: 20px !important;
-    padding: 2rem !important;
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100% !important;
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     text-align: left;
-    transition: all 0.3s ease;
 }
 
 article.project-card:hover {
-    transform: translateY(-8px);
     border-color: var(--accent-pink) !important;
-    box-shadow: 0 0 20px rgba(163, 41, 158, 0.3) !important;
+    box-shadow: 0 0 20px rgba(163, 41, 158, 0.3);
 }
 
 .card-footer {
-    margin-top: auto !important;
-    padding-top: 1rem !important;
-    border-top: 1px solid var(--glass-border) !important;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--glass-border);
 }
 
-/* --- 6. BUTTONS --- */
-#hero-glow-btn, .contact-btn {
+/* --- 6. FOOTER FIX --- */
+footer.container {
+    width: 100%;
+    text-align: center !important;
+    padding: 40px 0;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: block !important;
+    width: 100%;
+}
+
+/* --- 7. BUTTONS --- */
+#hero-glow-btn, .contact-btn, [role="button"] {
     background-color: var(--accent-bright) !important;
     border: none !important;
     border-radius: 50px !important;
-    padding: 12px 30px !important;
+    padding: 10px 25px !important;
     display: inline-flex !important;
     color: white !important;
     text-decoration: none !important;
-    box-shadow: 0 0 15px rgba(127, 29, 255, 0.4) !important;
-    transition: all 0.3s ease !important;
-}
-
-#hero-glow-btn:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 0 30px rgba(127, 29, 255, 0.7) !important;
 }
 
 .contact-grid {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 40px !important;
-    margin: 40px 0 !important;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
 }
-
-.contact-btn.secondary { background-color: var(--accent-pink) !important; }
