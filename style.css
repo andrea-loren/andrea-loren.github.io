@@ -22,7 +22,6 @@ body {
     line-height: 1.6;
     min-height: 100vh;
     padding-top: 80px;
-    text-align: center; /* Ensures global centering */
 }
 
 h1, h2, h3, h4, p, li, strong, span {
@@ -33,29 +32,40 @@ h1, h2, h3, h4, p, li, strong, span {
     color: var(--accent-bright) !important;
 }
 
-/* --- 3. NAVIGATION --- */
+/* --- 3. NAVIGATION (FIXED ALIGNMENT) --- */
 nav.container-fluid {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(18, 5, 38, 0.8) !important;
+    background: rgba(18, 5, 38, 0.9) !important;
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--glass-border) !important;
     z-index: 1000;
+    /* This ensures the nav items don't inherit global centering */
+    text-align: left !important; 
 }
 
 .nav-wrapper {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Logo Left, Links Right */
+    align-items: center;
     padding: 10px 40px;
 }
 
-/* --- 4. DNA HELIX ANIMATION --- */
+.nav-wrapper ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+/* --- 4. DNA HELIX ANIMATION (RUNG FIX) --- */
 .dna-wrapper {
     position: relative;
-    height: 120px;
+    height: 140px; 
     width: 100%;
     display: flex;
     justify-content: center;
@@ -70,23 +80,23 @@ nav.container-fluid {
     background: var(--accent-bright);
     border-radius: 50%;
     box-shadow: 0 0 15px var(--accent-bright);
-    left: calc(50% + (var(--i) - 3.5) * 40px);
+    left: calc(50% + (var(--i) - 3.5) * 45px); /* Slightly wider spacing */
     animation: dna-twist 2s ease-in-out infinite;
     animation-delay: var(--d);
 }
 
-/* The Rungs (Connecting Lines) */
+/* The Connector Rungs */
 .dna-dot::before {
     content: "";
     position: absolute;
-    top: 6px; /* Half of dot height */
-    left: 6px; /* Half of dot width */
+    top: 6px; 
+    left: 5px;
     width: 2px;
-    height: 60px; /* Distance between strands */
+    /* This height connects the two dots as they oscillate */
+    height: 60px; 
     background: linear-gradient(to bottom, var(--accent-bright), var(--accent-pink));
-    opacity: 0.2;
+    opacity: 0.25;
     z-index: -1;
-    transform-origin: top;
 }
 
 .second-strand {
@@ -95,25 +105,29 @@ nav.container-fluid {
     animation-name: dna-twist-reverse !important;
 }
 
-.second-strand::before { display: none; } /* Only one set of lines */
+/* Hide lines on second strand to prevent overlap */
+.second-strand::before {
+    display: none;
+}
 
 @keyframes dna-twist {
-    0%, 100% { transform: translateY(-30px) scale(1.2); opacity: 1; }
-    50% { transform: translateY(30px) scale(0.7); opacity: 0.4; }
+    0%, 100% { transform: translateY(-35px) scale(1.2); opacity: 1; z-index: 10; }
+    50% { transform: translateY(35px) scale(0.7); opacity: 0.4; z-index: 1; }
 }
 
 @keyframes dna-twist-reverse {
-    0%, 100% { transform: translateY(30px) scale(0.7); opacity: 0.4; }
-    50% { transform: translateY(-30px) scale(1.2); opacity: 1; }
+    0%, 100% { transform: translateY(35px) scale(0.7); opacity: 0.4; z-index: 1; }
+    50% { transform: translateY(-35px) scale(1.2); opacity: 1; z-index: 10; }
 }
 
 /* --- 5. CARDS --- */
+.hero { text-align: center; }
+
 .grid {
     display: grid !important;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     align-items: stretch !important;
-    text-align: left; /* Keep card text left-aligned */
 }
 
 article.project-card {
@@ -125,6 +139,7 @@ article.project-card {
     display: flex !important;
     flex-direction: column !important;
     height: 100% !important;
+    text-align: left;
     transition: all 0.4s ease !important;
 }
 
@@ -154,27 +169,20 @@ article.project-card:hover {
     padding: 60px 0;
 }
 
-/* --- 7. BUTTONS --- */
-#hero-glow-btn, .contact-btn, [role="button"] {
+/* --- 7. BUTTONS & CONTACT --- */
+#hero-glow-btn, .contact-btn {
     background-color: var(--accent-bright) !important;
     border: none !important;
     color: white !important;
     border-radius: 50px !important;
     padding: 12px 30px !important;
     display: inline-flex !important;
-    justify-content: center;
-    align-items: center;
+    margin: 20px auto;
     text-decoration: none !important;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
     box-shadow: 0 0 15px rgba(127, 29, 255, 0.4) !important;
 }
 
-#hero-glow-btn:hover, .contact-btn:hover {
-    transform: translateY(-8px) !important;
-    box-shadow: 0 0 30px rgba(127, 29, 255, 0.7) !important;
-}
-
-/* --- 8. CONTACT GRID --- */
 .contact-grid {
     display: flex !important;
     justify-content: center !important;
@@ -186,5 +194,5 @@ article.project-card:hover {
 .contact-btn.secondary { background-color: var(--accent-pink) !important; }
 
 @media (max-width: 600px) {
-    .contact-grid { flex-direction: column; gap: 20px; }
+    .contact-grid { flex-direction: column; align-items: center; gap: 20px; }
 }
